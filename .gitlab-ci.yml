@@ -23,9 +23,6 @@ build:
     expire_in: 1 hour
     paths:
     - ./bin/release/net5.0
-  only:
-    variables:
-     - $RUN == "true"
 
 run:
   stage: run
@@ -34,6 +31,3 @@ run:
   - cd ./bin/release/net5.0
   script:
   - ./bin/release/net5.0/App --root-folder . --participants-database ./database/participants.json --publications-folder ./database/publications
-  only:
-    variables:
-    - $RUN == "true"
