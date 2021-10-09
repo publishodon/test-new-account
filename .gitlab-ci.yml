@@ -29,5 +29,6 @@ run:
   image: mcr.microsoft.com/dotnet/runtime:5.0-alpine-amd64
   before_script:
   - cd ./bin/release/net5.0
+  - ls
   script:
   - ./bin/release/net5.0/App --root-folder . --participants-database ./database/participants.json --publications-folder ./database/publications
