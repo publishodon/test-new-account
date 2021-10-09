@@ -1,0 +1,39 @@
+stages:
+- build
+- run
+
+variables:
+  SOURCE_NAME: gitlab-publishodon-service
+
+build:
+  stage: build
+  image: mcr.microsoft.com/dotnet/sdk:5.0-alpine-amd64
+  before_script:
+  - |
+    dotnet nuget add source "${CI_API_V4_URL}/projects/172/packages/nuget/index.json" \
+      --name ${SOURCE_NAME} \
+      --username $GITLAB_USER_LOGIN \
+      --password $PRIVATE_ACCESS_TOKEN \
+      --store-password-in-clear-text
+  script:
+  - dotnet restore
+  - dotnet publish -c release
+  artifacts:
+    untracked: false
+    expire_in: 1 hour
+    paths:
+    - ./bin/release/net5.0
+  only:
+    variables:
+     - $RUN == "true"
+
+run:
+  stage: run
+  image: mcr.microsoft.com/dotnet/runtime:5.0-alpine-amd64
+  before_script:
+  - cd ./bin/release/net5.0
+  script:
+  - ./bin/release/net5.0/App --root-folder . --participants-database ./database/participants.json --publications-folder ./database/publications
+  only:
+    variables:
+    - $RUN == "true"
