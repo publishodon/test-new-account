@@ -3,15 +3,15 @@
     {
       "account": "+41774288394",
       "name": "choupinou",
-	  "start": "2021-11-26T00:00:00",
-	  "communicationService": "WhatsAppService"
+	    "start": "2021-11-25T00:00:00",
+	    "communicationService": "WhatsAppService"
     },
 	{
       "account": "+41786746984",
       "name": "choupinette",
-	  "start": "2021-11-27T00:00:00",
-	  "communicationService": "WhatsAppService"
+	    "start": "2021-11-25T00:00:00",
+	    "communicationService": "WhatsAppService"
     }
   ],
-  "durationInDays": 2
+  "durationInDays": 3
 }
