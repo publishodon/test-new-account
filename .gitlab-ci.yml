@@ -28,4 +28,8 @@ run:
   stage: run
   image: mcr.microsoft.com/dotnet/runtime:5.0-alpine-amd64
   script:
-  - ./bin/release/net5.0/App --root-folder . --participants-database ./database/participants.json --publications-folder ./database/publications
+  - |
+    ./bin/release/net5.0/App --root-folder . \
+      --participants-database ./database/participants.json \
+      --publications-folder ./database/publications \
+      --file-server-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/files
