@@ -10,7 +10,7 @@ build:
   image: mcr.microsoft.com/dotnet/sdk:5.0-alpine-amd64
   before_script:
   - |
-    dotnet nuget add source "${CI_API_V4_URL}/projects/172/packages/nuget/index.json" \
+    dotnet nuget add source "${CI_API_V4_URL}/projects/${CORE_PUBLISHODON_PROJECT_ID}/packages/nuget/index.json" \
       --name ${SOURCE_NAME} \
       --username $GITLAB_USER_LOGIN \
       --password $PRIVATE_ACCESS_TOKEN \
